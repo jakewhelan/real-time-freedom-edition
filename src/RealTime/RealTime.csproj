@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RealTime</RootNamespace>
-    <AssemblyName>RealTime</AssemblyName>
+    <AssemblyName>RealTimeNoSteam</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -25,7 +25,7 @@
     <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>..\BuildEnvironment\RealTime.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>..\bin\Debug\RealTime.xml</DocumentationFile>
+    <DocumentationFile>..\bin\Debug\RealTimeNoSteam.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>..\bin\Release\</OutputPath>
@@ -36,7 +36,7 @@
     <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>..\BuildEnvironment\RealTime.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>..\bin\Release\RealTime.xml</DocumentationFile>
+    <DocumentationFile>..\bin\Release\RealTimeNoSteam.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Benchmark|x64'">
     <OutputPath>..\bin\Benchmark\</OutputPath>
@@ -51,19 +51,19 @@
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
       <Private>True</Private>
-    </Reference>
+      </Reference>
     <Reference Include="ColossalManaged">
       <Private>True</Private>
-    </Reference>
+      </Reference>
     <Reference Include="ICities">
       <Private>True</Private>
-    </Reference>
+      </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
       <Private>True</Private>
-    </Reference>
+      </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\VirtualCitizensLevel.cs" />
@@ -220,14 +220,6 @@
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.0-beta009\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>xcopy /y /q /d "$(TargetPath)" "%25d:\Data\SteamLibrary\steamapps\workshop\content\255710\1420955187"
-xcopy /y /q /d "$(TargetDir)SkyTools.dll" "%25d:\Data\SteamLibrary\steamapps\workshop\content\255710\1420955187"
-xcopy /y /q /d "$(TargetDir)0Harmony.dll" "%25d:\Data\SteamLibrary\steamapps\workshop\content\255710\1420955187"
-
-xcopy /y /q /i "$(TargetDir)Localization\Translations" "d:\Data\SteamLibrary\steamapps\workshop\content\255710\1420955187\Localization"
-xcopy /y /q /i "$(ProjectDir)Events\Templates" "d:\Data\SteamLibrary\steamapps\workshop\content\255710\1420955187\Events"</PostBuildEvent>
-  </PropertyGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
