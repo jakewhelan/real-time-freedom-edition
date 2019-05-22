@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\UtilPack.NuGet.MSBuild.2.8.0\build\UtilPack.NuGet.MSBuild.props" Condition="Exists('..\packages\UtilPack.NuGet.MSBuild.2.8.0\build\UtilPack.NuGet.MSBuild.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7CD7702C-E7D3-4E61-BF3A-B10F7950DE52}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RealTime</RootNamespace>
+    <AssemblyName>RealTime</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>..\BuildEnvironment\RealTime.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>..\bin\Debug\RealTime.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>..\BuildEnvironment\RealTime.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>..\bin\Release\RealTime.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Benchmark|x64'">
+    <OutputPath>..\bin\Benchmark\</OutputPath>
+    <DefineConstants>TRACE;BENCHMARK</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>..\BuildEnvironment\RealTime.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ColossalManaged">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ICities">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Config\VirtualCitizensLevel.cs" />
+    <Compile Include="Core\ModIds.cs" />
+    <Compile Include="Core\RealTimeBenchmark.cs" />
+    <Compile Include="Core\Compatibility.cs" />
+    <Compile Include="Core\RealTimeStorage.cs" />
+    <Compile Include="CustomAI\CitizenScheduleStorage.cs" />
+    <Compile Include="CustomAI\Constants.cs" />
+    <Compile Include="CustomAI\IRealTimeBuildingAI.cs" />
+    <Compile Include="CustomAI\ISpareTimeBehavior.cs" />
+    <Compile Include="CustomAI\ITravelBehavior.cs" />
+    <Compile Include="CustomAI\IWorkBehavior.cs" />
+    <Compile Include="CustomAI\RealTimeHumanAIBase.cs" />
+    <Compile Include="CustomAI\ResidentState.cs" />
+    <Compile Include="CustomAI\RealTimeBuildingAI.cs" />
+    <Compile Include="CustomAI\RealTimeResidentAI.Common.cs" />
+    <Compile Include="CustomAI\RealTimeResidentAI.cs" />
+    <Compile Include="CustomAI\RealTimeTouristAI.cs" />
+    <Compile Include="CustomAI\CitizenSchedule.cs" />
+    <Compile Include="CustomAI\ScheduleHint.cs" />
+    <Compile Include="CustomAI\SpareTimeBehavior.cs" />
+    <Compile Include="CustomAI\TravelBehavior.cs" />
+    <Compile Include="CustomAI\WeatherInfo.cs" />
+    <Compile Include="CustomAI\WorkBehavior.cs" />
+    <Compile Include="CustomAI\WorkShift.cs" />
+    <Compile Include="CustomAI\WorkStatus.cs" />
+    <Compile Include="Events\CityEventState.cs" />
+    <Compile Include="Events\ICityEventsProvider.cs" />
+    <Compile Include="Events\ICityEvent.cs" />
+    <Compile Include="Events\IRealTimeEventManager.cs" />
+    <Compile Include="Events\RealTimeCityEvent.cs" />
+    <Compile Include="Events\CityEventBase.cs" />
+    <Compile Include="Events\RealTimeEventManager.cs" />
+    <Compile Include="Events\Storage\CityEventAttendees.cs" />
+    <Compile Include="Events\Storage\CityEventCosts.cs" />
+    <Compile Include="Events\Storage\CityEventTemplate.cs" />
+    <Compile Include="Events\Storage\CityEventContainer.cs" />
+    <Compile Include="Events\Storage\CityEventsLoader.cs" />
+    <Compile Include="Events\Storage\RealTimeEventStorage.cs" />
+    <Compile Include="Events\Storage\RealTimeEventStorageContainer.cs" />
+    <Compile Include="Events\VanillaEvent.cs" />
+    <Compile Include="Events\VanillaEvents.cs" />
+    <Compile Include="GameConnection\CitizenConnection.cs" />
+    <Compile Include="GameConnection\Patches\BuildingAIPatches.cs" />
+    <Compile Include="GameConnection\GameRandomizer.cs" />
+    <Compile Include="GameConnection\HumanAIConnectionBase.cs" />
+    <Compile Include="GameConnection\ICitizenConnection.cs" />
+    <Compile Include="GameConnection\IToolManagerConnection.cs" />
+    <Compile Include="GameConnection\ITransferManagerConnection.cs" />
+    <Compile Include="GameConnection\IWeatherManagerConnection.cs" />
+    <Compile Include="GameConnection\Patches\OutsideConnectionAIPatch.cs" />
+    <Compile Include="GameConnection\Patches\ParkPatches.cs" />
+    <Compile Include="GameConnection\Patches\TransferManagerPatch.cs" />
+    <Compile Include="GameConnection\Patches\UIGraphPatches.cs" />
+    <Compile Include="GameConnection\Patches\WeatherManagerPatch.cs" />
+    <Compile Include="GameConnection\Patches\WorldInfoPanelPatches.cs" />
+    <Compile Include="GameConnection\TouristAIConnection.cs" />
+    <Compile Include="GameConnection\Patches\TouristAIPatch.cs" />
+    <Compile Include="GameConnection\Patches\ResidentAIPatch.cs" />
+    <Compile Include="CustomAI\RealTimeResidentAI.Moving.cs" />
+    <Compile Include="CustomAI\RealTimeResidentAI.Visit.cs" />
+    <Compile Include="CustomAI\RealTimeResidentAI.SchoolWork.cs" />
+    <Compile Include="GameConnection\BuildingManagerConnection.cs" />
+    <Compile Include="GameConnection\CitizenManagerConnection.cs" />
+    <Compile Include="GameConnection\GameConnections.cs" />
+    <Compile Include="GameConnection\EventManagerConnection.cs" />
+    <Compile Include="GameConnection\IBuildingManagerConnection.cs" />
+    <Compile Include="GameConnection\ICitizenManagerConnection.cs" />
+    <Compile Include="GameConnection\IEventManagerConnection.cs" />
+    <Compile Include="GameConnection\ResidentAIConnection.cs" />
+    <Compile Include="Config\RealTimeConfig.cs" />
+    <Compile Include="Core\RealTimeCore.cs" />
+    <Compile Include="GameConnection\ToolManagerConnection.cs" />
+    <Compile Include="GameConnection\TransferManagerConnection.cs" />
+    <Compile Include="GameConnection\WeatherManagerConnection.cs" />
+    <Compile Include="Localization\TranslationKeys.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Core\RealTimeMod.cs" />
+    <Compile Include="Simulation\AwakeSleepSimulation.cs" />
+    <Compile Include="Simulation\CitizenProcessor.cs" />
+    <Compile Include="Simulation\DayTimeSimulation.cs" />
+    <Compile Include="Simulation\IRandomizer.cs" />
+    <Compile Include="Simulation\IWeatherInfo.cs" />
+    <Compile Include="Simulation\SimulationHandler.cs" />
+    <Compile Include="Simulation\DayTimeCalculator.cs" />
+    <Compile Include="Simulation\ITimeInfo.cs" />
+    <Compile Include="Simulation\Statistics.cs" />
+    <Compile Include="Simulation\TimeAdjustment.cs" />
+    <Compile Include="GameConnection\TimeInfo.cs" />
+    <Compile Include="LogCategory.cs" />
+    <Compile Include="Simulation\TimeControlCompatibility.cs" />
+    <Compile Include="UI\CustomCitizenInfoPanel.cs" />
+    <Compile Include="UI\CustomTimeBarClickEventArgs.cs" />
+    <Compile Include="UI\ConfigUI.cs" />
+    <Compile Include="UI\CustomVehicleInfoPanel.cs" />
+    <Compile Include="UI\DateTooltipBehavior.cs" />
+    <Compile Include="UI\Notification.cs" />
+    <Compile Include="UI\RealTimeInfoPanelBase.cs" />
+    <Compile Include="UI\RealTimeUIDateTimeWrapper.cs" />
+    <Compile Include="UI\CustomTimeBar.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="..\BuildEnvironment\stylecop.json">
+      <Link>stylecop.json</Link>
+    </AdditionalFiles>
+    <Compile Include="CustomAI\RealTimeResidentAI.Home.cs" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Localization\Translations\de.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Localization\Translations\es.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Localization\Translations\fr.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Localization\Translations\ko.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Localization\Translations\pl.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Localization\Translations\pt.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Localization\Translations\ru.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Localization\Translations\en.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Localization\Translations\zh.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Events\Templates\Aquarium.xml" />
+    <Content Include="Events\Templates\ArtMuseum.xml" />
+    <Content Include="Events\Templates\ExpoCenter.xml" />
+    <Content Include="Events\Templates\Library.xml" />
+    <Content Include="Events\Templates\Opera.xml" />
+    <Content Include="Events\Templates\PoshMall.xml" />
+    <Content Include="Events\Templates\Theater.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SkyTools\src\SkyTools\SkyTools.csproj">
+      <Project>{f83d96ef-857a-4aa4-8c23-7d258dad777d}</Project>
+      <Name>SkyTools</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.0-beta009\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.0-beta009\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /y /q /d "$(TargetPath)" "%25d:\Data\SteamLibrary\steamapps\workshop\content\255710\1420955187"
+xcopy /y /q /d "$(TargetDir)SkyTools.dll" "%25d:\Data\SteamLibrary\steamapps\workshop\content\255710\1420955187"
+xcopy /y /q /d "$(TargetDir)0Harmony.dll" "%25d:\Data\SteamLibrary\steamapps\workshop\content\255710\1420955187"
+
+xcopy /y /q /i "$(TargetDir)Localization\Translations" "d:\Data\SteamLibrary\steamapps\workshop\content\255710\1420955187\Localization"
+xcopy /y /q /i "$(ProjectDir)Events\Templates" "d:\Data\SteamLibrary\steamapps\workshop\content\255710\1420955187\Events"</PostBuildEvent>
+  </PropertyGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\GitVersionTask.4.0.0\build\GitVersionTask.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\GitVersionTask.4.0.0\build\GitVersionTask.targets'))" />
+    <Error Condition="!Exists('..\packages\UtilPack.NuGet.MSBuild.2.8.0\build\UtilPack.NuGet.MSBuild.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UtilPack.NuGet.MSBuild.2.8.0\build\UtilPack.NuGet.MSBuild.props'))" />
+  </Target>
+  <Import Project="..\packages\GitVersionTask.4.0.0\build\GitVersionTask.targets" Condition="Exists('..\packages\GitVersionTask.4.0.0\build\GitVersionTask.targets')" />
+</Project>
