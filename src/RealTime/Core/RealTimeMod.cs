@@ -14,14 +14,14 @@ namespace RealTime.Core
     using SkyTools.Localization;
     using SkyTools.Tools;
     using SkyTools.UI;
+    using static ColossalFramework.Plugins.PluginManager;
 
     /// <summary>The main class of the Real Time mod.</summary>
     public sealed class RealTimeMod : LoadingExtensionBase, IUserMod
     {
-        private const long WorkshopId = 1420955187;
-        private const string NoWorkshopMessage = "Real Time can only run when subscribed to in Steam Workshop";
+        private const string WrongFolderName = "Rename your Real Time mod folder to \"real-time-nosteam\", thank you!";
 
-        private readonly string modVersion = GitVersion.GetAssemblyVersion(typeof(RealTimeMod).Assembly);
+        private readonly string modVersion = "1.17.0-nosteam";
         private readonly string modPath = GetModPath();
 
         private ConfigurationProvider<RealTimeConfig> configProvider;
@@ -40,10 +40,10 @@ namespace RealTime.Core
 #endif
 
         /// <summary>Gets the name of this mod.</summary>
-        public string Name => "Real Time";
+        public string Name => "Real Time - FREEDOM EDITION! (" + modVersion + ")";
 
         /// <summary>Gets the description string of this mod.</summary>
-        public string Description => "Adjusts the time flow and the Cims behavior to make them more real. Version: " + modVersion;
+        public string Description => "Adjusts the time flow and the Cims behavior to make them more real.";
 
         /// <summary>Called when this mod is enabled.</summary>
         public void OnEnabled()
@@ -54,7 +54,7 @@ namespace RealTime.Core
 
             if (string.IsNullOrEmpty(modPath))
             {
-                Log.Info($"The 'Real Time' mod version {modVersion} cannot be started because of no Steam Workshop");
+                Log.Info(WrongFolderName);
                 return;
             }
 
@@ -91,7 +91,7 @@ namespace RealTime.Core
         {
             if (string.IsNullOrEmpty(modPath))
             {
-                helper?.AddGroup(NoWorkshopMessage);
+                helper?.AddGroup(WrongFolderName);
                 return;
             }
 
@@ -120,7 +120,7 @@ namespace RealTime.Core
         {
             if (string.IsNullOrEmpty(modPath))
             {
-                MessageBox.Show("Sorry", NoWorkshopMessage);
+                MessageBox.Show("Folder name is wrong", WrongFolderName);
                 return;
             }
 
@@ -169,7 +169,7 @@ namespace RealTime.Core
 
             if (core != null)
             {
-                Log.Info($"The 'Real Time' mod stops.");
+                Log.Info("The 'Real Time' mod stops.");
                 core.Stop();
                 core = null;
             }
@@ -179,8 +179,10 @@ namespace RealTime.Core
 
         private static string GetModPath()
         {
-            PluginManager.PluginInfo pluginInfo = PluginManager.instance.GetPluginsInfo()
-                .FirstOrDefault(pi => pi.publishedFileID.AsUInt64 == WorkshopId);
+            PluginManager.PluginInfo pluginInfo = PluginManager
+                .instance
+                .GetPluginsInfo()
+                .FirstOrDefault(info => info.modPath.Contains("real-time-nosteam"));
 
             return pluginInfo?.modPath;
         }
